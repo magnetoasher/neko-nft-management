@@ -5,14 +5,14 @@ interface Props {
   children: React.ReactNode;
 }
 
-const MainLayout: React.FunctionComponent<Props> = (props) => {
+const MainLayout: React.FC<Props> = (props) => {
   return (
-    <div className="flex">
+    <div className="flex h-full">
       <Sidebar />
-      <div className="w-full py-8 px-12">
+      <main className="w-full h-full py-8 px-12 flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
         <Navbar />
         {props.children}
-      </div>
+      </main>
     </div>
   );
 };
