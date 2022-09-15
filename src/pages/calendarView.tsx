@@ -1,5 +1,12 @@
+import React from 'react';
+import Calendar from '../components/calendar/Calendar';
+
 function CalendarView() {
-  return <div>Calendar View</div>;
+  return (
+    <React.Fragment>
+      <Calendar />
+    </React.Fragment>
+  );
 }
 
 export default CalendarView;

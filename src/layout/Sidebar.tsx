@@ -4,27 +4,27 @@ import SidebarItem from './SidebarItem';
 
 const listItems = [
   {
-    name: 'Home',
+    name: 'home',
     link: '/',
   },
   {
-    name: 'Calendar',
+    name: 'calendar',
     link: '/calendar',
   },
   {
-    name: 'Spreadsheet',
+    name: 'spreadsheet',
     link: '/spreadsheet',
   },
   {
-    name: 'Database',
+    name: 'database',
     link: '/database',
   },
 ];
 
-export default function Sidebar() {
+const Sidebar: React.FC = () => {
   return (
     <div className="flex">
-      <div className="flex flex-col h-screen p-5 bg-white shadow w-56">
+      <aside className="flex flex-col h-screen p-5 bg-white shadow w-56 transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in">
         <div className="space-y-3">
           <div className="flex items-center justify-center mb-16">
             <Link to="/">
@@ -39,7 +39,9 @@ export default function Sidebar() {
             </ul>
           </div>
         </div>
-      </div>
+      </aside>
     </div>
   );
-}
+};
+
+export default Sidebar;
