@@ -34,7 +34,7 @@ export const YearViewCalendar = () => {
           <MonthCalendar
             size="small"
             calendarMatrix={createYearCalendarMatrix(
-              new Date(Number(year), idx + 1, 1)
+              new Date(Number(year), idx, 1)
             )}
           />
         </div>

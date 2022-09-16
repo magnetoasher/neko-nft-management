@@ -29,8 +29,8 @@ const SidebarItem: React.FC<Props> = ({ name, link }) => {
     >
       <Link
         to={link}
-        className={`flex items-center p-2 space-x-3 text-black hover:text-white ${
-          active ? 'text-white' : ''
+        className={`flex items-center p-2 space-x-3 hover:text-white ${
+          active ? 'text-white' : 'text-black'
         }`}
       >
         <svg

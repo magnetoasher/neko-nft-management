@@ -36,3 +36,14 @@ export type RootReducer = {
   uiReducer: UIinitialState;
   calendar: CalendarInitialState;
 };
+
+export interface NFTData {
+  id: number;
+  title: string;
+  date: string;
+  price: string[];
+  type: string;
+  wallet: string;
+  socialMedia: string[];
+  notes: string;
+}

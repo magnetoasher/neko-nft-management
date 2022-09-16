@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Layout from './layout/Main';
 import CalendarView from './pages/calendarView';
+import SpreadsheetView from './pages/spreadsheetView';
 
 import './styles/index.scss';
 
@@ -13,6 +14,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="calendar" element={<CalendarView />} />
+          <Route path="spreadsheet" element={<SpreadsheetView />} />
         </Routes>
       </Layout>
       <ToastContainer />

@@ -21,6 +21,7 @@ export const createYearCalendarMatrix = (date: Date) => {
   let counterBefore: number = 1;
   const matrix: DayType[][] = [];
 
+  const today = new Date();
   for (let row = 0; row < 6; row++) {
     matrix.push([]);
 
@@ -30,10 +31,6 @@ export const createYearCalendarMatrix = (date: Date) => {
           day: daysInMonth[prevMonth] - firstDayOfMonth + counterBefore,
           id: `${year}-${month}-${counterBefore}`,
           cell: true,
-          isToday:
-            counter === date.getDate() &&
-            month === date.getMonth() &&
-            year === date.getFullYear(),
         };
         counterBefore++;
       }
@@ -45,9 +42,9 @@ export const createYearCalendarMatrix = (date: Date) => {
           cell: true,
           isCurrentMonth: true,
           isToday:
-            counter === date.getDate() &&
-            month === date.getMonth() &&
-            year === date.getFullYear(),
+            counter === today.getDate() &&
+            month === today.getMonth() &&
+            year === today.getFullYear(),
         };
         counter++;
       }
@@ -59,9 +56,9 @@ export const createYearCalendarMatrix = (date: Date) => {
           cell: true,
           isCurrentMonth: true,
           isToday:
-            counter === date.getDate() &&
-            month === date.getMonth() &&
-            year === date.getFullYear(),
+            counter === today.getDate() &&
+            month === today.getMonth() &&
+            year === today.getFullYear(),
         };
         counter++;
       } else if (row > 0 && counter > numOfDays) {

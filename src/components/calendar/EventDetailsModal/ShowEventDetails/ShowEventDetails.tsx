@@ -18,6 +18,7 @@ import {
 import { updateEventData } from '../../../../redux/actions/actionsCalendar';
 import { CalendarEventData } from '../../../../ts-generalTypes/InitialStateInterfaces';
 import { useInput } from '../../../../hooks/useInput';
+import { useTextArea } from '../../../../hooks/useTextArea';
 import { useTimePicker } from '../../../../hooks/useTimePicker';
 import {
   getLocalStorageData,
@@ -35,7 +36,7 @@ export const EventDetailsPopup = () => {
     (item: CalendarEventData) => item.uniqueEventId === id
   );
   const eventTitleValue = useInput(filteredEventData[0].title, false);
-  const eventDescriptionValue = useInput(
+  const eventDescriptionValue = useTextArea(
     filteredEventData[0].description,
     false
   );
@@ -51,8 +52,8 @@ export const EventDetailsPopup = () => {
       timeTo: timeTo.timeOption,
     };
     dispatch(updateEventData(updatedEventObject));
-    dispatch(closeEventModalPopup());
     dispatch(makeEventDetailsModalEditable());
+    dispatch(closeEventModalPopup());
     if (currentCalendarView === 'day') {
       dispatch(changeCalendarView('month'));
     }
@@ -99,11 +100,11 @@ export const EventDetailsPopup = () => {
           minuteStep={15}
         />
       </div>
-      <input
+      <textarea
         {...eventDescriptionValue}
-        className="w-4/5 outline-none border-none m-2.5 ml-0"
+        className="w-4/5 h-20 outline-none border-none m-2.5 ml-0"
         disabled={!isEventModalEditable}
-      />
+      ></textarea>
       <div className="w-full flex justify-end mb-[15px] gap-5 cursor-move control-buttons">
         <Button
           type="primary"
