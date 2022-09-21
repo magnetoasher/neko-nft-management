@@ -22,7 +22,7 @@ export const MonthCalendarEvent = (props: MonthCalendarEventProps) => {
   return (
     <div
       id={`${uniqueEventId}`}
-      className="w-auto bg-black m-[5px] text-left box-border overflow-hidden h-10 py-0 px-[5px] font-bold flex items-center justify-center text-white rounded-md hover:shadow-[0px_4px_16px_0px_rgba(0,0,0,0.4)] ease-in-out duration-150"
+      className="w-auto bg-[#e3e6ff] m-[3px] text-left box-border overflow-hidden py-0 pl-[5px] font-medium text-[15px] text-black rounded-[5px] hover:shadow-[0px_4px_16px_0px_rgba(0,0,0,0.4)] ease-in-out duration-150"
       onClick={handleOnEventClick}
     >
       <p className="m-0">{title}</p>

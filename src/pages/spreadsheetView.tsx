@@ -1,5 +1,6 @@
 import React from 'react';
 import DataTable, { TableColumn } from 'react-data-table-component';
+import { SearchOutlined } from '@ant-design/icons';
 
 import { NFTs } from '../redux/mocked-data';
 import { NFTData } from '../ts-generalTypes/InitialStateInterfaces';
@@ -47,9 +48,7 @@ const SpreadsheetView: React.FC = () => {
       cell: (row) => (
         <div className="flex">
           {row.socialMedia.map((item, index) => (
-            <div key={index} className="mr-1">
-              {makeIcon(item)}
-            </div>
+            <div key={index}>{makeIcon(item, false)}</div>
           ))}
         </div>
       ),
@@ -71,13 +70,13 @@ const SpreadsheetView: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100%-70px)]">
+    <div className="flex flex-col w-full h-[calc(100%-50px)]">
       <div className="my-1">
         <button className="bg-black text-white font-medium py-3 px-4 rounded-md mr-2">
           + Add Project
         </button>
-        <button className="p-3 rounded-xl border-solid border-2 border-black bg-white text-black">
-          Filter
+        <button className="px-4 py-3 rounded-xl border-solid border-2 border-black bg-white text-black hover:text-white hover:bg-black">
+          <SearchOutlined />
         </button>
       </div>
       <DataTable

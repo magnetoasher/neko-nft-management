@@ -3,8 +3,7 @@ export type CalendarEventData = {
   uniqueEventId: string;
   date?: string;
   title: string;
-  timeFrom: string;
-  timeTo: string;
+  time: string;
   description: string;
 };
 
@@ -43,6 +42,7 @@ export interface NFTData {
   date: string;
   price: string[];
   type: string;
+  supply: number;
   wallet: string;
   socialMedia: string[];
   notes: string;

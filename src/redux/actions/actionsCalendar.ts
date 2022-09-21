@@ -8,8 +8,7 @@ export const createEvent = (value: CalendarEventData) => {
     uniqueEventId: value.uniqueEventId,
     day: value.date,
     title: value.title,
-    timeFrom: value.timeFrom,
-    timeTo: value.timeTo,
+    time: value.time,
     description: value.description,
   };
   return {

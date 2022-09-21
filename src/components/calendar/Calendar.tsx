@@ -22,9 +22,15 @@ const Calendar: React.FC = () => {
   const currentCalendarView = useSelector(selectCurrentCalendarView);
 
   return (
-    <div className="h-[calc(100%-70px)] bg-inherit">
+    <div className="w-9/12 h-[calc(100%-50px)] bg-inherit">
       <Header />
-      <div className="w-full h-[calc(100%-70px)] overflow-y-auto">
+      <div
+        className={`w-full h-[calc(100%-82px)] ${
+          currentCalendarView === 'day'
+            ? 'p-2 mt-8 border-solid border-[1px] border-[rgba(48,48,48,0.2)] rounded-[20px_20px_0_0]'
+            : ''
+        }`}
+      >
         {returnCalendarView(currentCalendarView)}
         {isEventCreatorWindowVisible ? <EventCreatorDialog /> : null}
         {isEventModalVisible ? <EventDetailsPopup /> : null}

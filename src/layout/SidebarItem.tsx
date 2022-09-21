@@ -23,7 +23,9 @@ const SidebarItem: React.FC<Props> = ({ name, link }) => {
 
   return (
     <li
-      className={`rounded-md hover:bg-black ${active ? 'bg-black' : ''}`}
+      className={`rounded-md hover:bg-gradient-to-r from-[#a04ef6] to-[#f64ee5] ${
+        active ? 'bg-gradient-to-r from-[#a04ef6] to-[#f64ee5]' : ''
+      }`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -47,7 +49,7 @@ const SidebarItem: React.FC<Props> = ({ name, link }) => {
         >
           <path d="M12 2l9 4.9V17L12 22l-9-4.9V7z" />
         </svg>
-        <span className="capitalized">{name}</span>
+        <span className="capitalize">{name}</span>
       </Link>
     </li>
   );

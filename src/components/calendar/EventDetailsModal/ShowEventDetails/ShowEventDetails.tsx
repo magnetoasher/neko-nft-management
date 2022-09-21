@@ -40,16 +40,14 @@ export const EventDetailsPopup = () => {
     filteredEventData[0].description,
     false
   );
-  const timeFrom = useTimePicker(filteredEventData[0].timeFrom, false);
-  const timeTo = useTimePicker(filteredEventData[0].timeTo, false);
+  const time = useTimePicker(filteredEventData[0].time, false);
 
   const updateEventHandler = () => {
     const updatedEventObject = {
       ...filteredEventData[0],
       title: eventTitleValue.value,
       description: eventDescriptionValue.value,
-      timeFrom: timeFrom.timeOption,
-      timeTo: timeTo.timeOption,
+      time: time.timeOption,
     };
     dispatch(updateEventData(updatedEventObject));
     dispatch(makeEventDetailsModalEditable());
@@ -86,18 +84,11 @@ export const EventDetailsPopup = () => {
       />
       <div className="flex flex-wrap gap-2.5">
         <TimePicker
-          defaultValue={moment(timeFrom.timeOption, 'HH:mm')}
+          defaultValue={moment(time.timeOption, 'HH:mm')}
           disabled={!isEventModalEditable}
           format="HH:mm"
           minuteStep={15}
-          {...timeFrom}
-        />
-        <TimePicker
-          defaultValue={moment(timeTo.timeOption, 'HH:mm')}
-          disabled={!isEventModalEditable}
-          format="HH:mm"
-          {...timeTo}
-          minuteStep={15}
+          {...time}
         />
       </div>
       <textarea

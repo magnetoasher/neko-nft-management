@@ -26,10 +26,12 @@ export const EventInDayView = ({
   return (
     <div
       style={{ top, height }}
-      className="absolute ml-[50px] w-3/5 bg-black text-white opacity-90 cursor-pointer"
+      className="absolute pl-16 pr-[11px] w-full text-black opacity-90 cursor-pointer"
       onClick={handleOnEventClick}
     >
-      {description}
+      <div className="bg-[#ffefe3] h-full pl-[12px] leading-[25px] rounded-[5px]">
+        {description}
+      </div>
     </div>
   );
 };

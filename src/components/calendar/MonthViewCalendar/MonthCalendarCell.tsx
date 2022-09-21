@@ -51,17 +51,15 @@ export const MonthCalendarCell: React.FC<MonthCalendarCellProps> = (props) => {
       key={unniqueKey}
       className={
         size === 'small'
-          ? 'day-cell flex-1 w-1/4 items-stretch border-solid border-[1px] border-[#cccccc] overflow-auto font-medium cursor-pointer text-center hover:bg-[#f1f5f6] border-none w-[34px] h-[34px] overflow-hidden font-normal'
-          : !isCurrentMonth
-          ? 'day-cell flex-1 w-1/4 items-stretch border-solid border-[1px] border-[#cccccc] overflow-auto font-medium cursor-pointer text-center hover:bg-[#f1f5f6] text-[#b9b7b7]'
-          : 'day-cell flex-1 w-1/4 items-stretch border-solid border-[1px] border-[#cccccc] overflow-auto font-medium cursor-pointer text-center hover:bg-[#f1f5f6]'
+          ? 'day-cell flex-1 w-1/4 items-stretch border-solid border-[1px] border-[#cccccc] overflow-auto font-medium cursor-pointer text-center border-none w-[34px] h-[34px] overflow-hidden font-normal'
+          : 'day-cell flex-1 w-1/4 items-stretch border-solid border-b-[2px] border-l-[1px] border-r-[1px] border-[#cccccc] overflow-auto font-medium cursor-pointer text-center'
       }
     >
       <div
-        className="badge inline-block py-[5px] px-[8px] text-black rounded-[50%] hover:bg-[#f1f5f6]"
+        className="badge inline-block py-0.5 px-1.5 text-black rounded-[50%] hover:bg-[#f1f5f6]"
         style={{
-          backgroundColor: isToday ? '#000' : '',
-          color: isToday ? '#fff' : '#000',
+          backgroundColor: isToday ? '#a04ef6' : '',
+          color: isToday ? '#fff' : !isCurrentMonth ? '#b9b7b7' : '#000',
         }}
       >
         {day}

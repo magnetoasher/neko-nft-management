@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import uniqid from 'uniqid';
 import 'antd/dist/antd.css';
 import { toast } from 'react-toastify';
-import moment from 'moment';
 
 import { closeEventCreatorWindow } from '../../../redux/actions/actionsUI';
 import { addNewEventToList } from '../../../redux/actions/actionsCalendar';
@@ -21,8 +20,7 @@ import { useTimePicker } from '../../../hooks/useTimePicker';
 const EventCreatorDialog = () => {
   const dispatch = useDispatch();
   const eventId = useSelector(selectCurrentSelectedEventId);
-  const timePickerFromObj = useTimePicker('', true);
-  const timePickerToObj = useTimePicker('', true);
+  const timePickerObj = useTimePicker('', true);
   const inputValue = useInput('', true);
   const textAreaValue = useTextArea('', true);
 
@@ -33,22 +31,11 @@ const EventCreatorDialog = () => {
   const hadleFormData = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
 
-    let f: any = moment(timePickerFromObj.timeOption, 'HH:mm');
-    let t: any = moment(timePickerToObj.timeOption, 'HH:mm');
-    if (f._d > t._d) {
-      toast.error('Date From should be greater than date To!', {
-        position: toast.POSITION.TOP_RIGHT,
-        autoClose: 1500,
-      });
-      return;
-    }
-
     const payload = {
       uniqueEventId: generatedUniqueEventId,
       date: eventId,
       title: inputValue.value!,
-      timeFrom: timePickerFromObj.timeOption,
-      timeTo: timePickerToObj.timeOption,
+      time: timePickerObj.timeOption,
       description: textAreaValue.value!,
     };
     dispatch(addNewEventToList(payload));
@@ -81,8 +68,7 @@ const EventCreatorDialog = () => {
         )}
 
         <div className="selectTime-wrapper flex justify-between my-5">
-          <TimePicker format="HH:mm" minuteStep={15} {...timePickerFromObj} />
-          <TimePicker format="HH:mm" {...timePickerToObj} minuteStep={15} />
+          <TimePicker format="HH:mm" minuteStep={30} {...timePickerObj} />
         </div>
         <textarea
           className="mx-0 p-2.5 border-none outline-none"

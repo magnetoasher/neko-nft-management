@@ -14,13 +14,13 @@ export const monthNames: string[] = [
 ];
 
 export const days: { day: string; id: number }[] = [
-  { day: 'Mon', id: 0 },
-  { day: 'Tue', id: 1 },
-  { day: 'Wed', id: 2 },
-  { day: 'Thu', id: 3 },
-  { day: 'Fri', id: 4 },
-  { day: 'Sat', id: 5 },
-  { day: 'Sun', id: 6 },
+  { day: 'Sun', id: 0 },
+  { day: 'Mon', id: 1 },
+  { day: 'Tue', id: 2 },
+  { day: 'Wed', id: 3 },
+  { day: 'Thu', id: 4 },
+  { day: 'Fri', id: 5 },
+  { day: 'Sat', id: 6 },
 ];
 
 export const daysStringArr: string[] = [

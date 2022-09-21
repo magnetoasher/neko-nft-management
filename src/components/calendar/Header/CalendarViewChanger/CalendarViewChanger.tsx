@@ -13,14 +13,20 @@ export const CalendarViewChanger = () => {
   return (
     <div className="relative w-full lg:max-w-sm">
       <select
-        className="w-full p-2.5 text-black font-bold bg-white border-solid border-2 border-black rounded-md shadow-sm appearance-none"
+        className="w-full p-2.5 text-white font-bold bg-gradient-to-r from-[#a04ef6] to-[#f64ee5] rounded-md cursor-pointer focus:outline-none hover:shadow-[0px_6px_24px_-2px_rgba(0,0,0,0.3)] ease-in-out duration-150"
         style={{ WebkitAppearance: 'listbox' }}
         onChange={changeViewHandler}
         value={currentCalendarView}
       >
-        <option value="year">Annually</option>
-        <option value="month">Monthly</option>
-        <option value="day">Daily</option>
+        <option value="year" className="text-black">
+          Annually
+        </option>
+        <option value="month" className="text-black">
+          Monthly
+        </option>
+        <option value="day" className="text-black">
+          Daily
+        </option>
       </select>
     </div>
   );

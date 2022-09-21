@@ -10,12 +10,12 @@ import { CalendarHeaderCell } from './CalendarHeaderCell';
 import { MonthCalendarCell } from './MonthCalendarCell';
 import { DayType } from '../../../ts-generalTypes/propTypes';
 
-interface MonthCalendaProps {
+interface MonthCalendarProps {
   size: string;
   calendarMatrix?: DayType[][];
 }
 
-const Calendar = ({ size, calendarMatrix }: MonthCalendaProps) => {
+const Calendar = ({ size, calendarMatrix }: MonthCalendarProps) => {
   const weekDaysName = useSelector(selectWeekDaysName);
   const currentCalendar = useSelector(selectCurrentCalendar);
   const calendar = calendarMatrix ? calendarMatrix : currentCalendar!;
@@ -23,7 +23,7 @@ const Calendar = ({ size, calendarMatrix }: MonthCalendaProps) => {
   const renderCalendarWeek = (week: DayType[]) => (
     <div
       key={Math.random() * 1000}
-      className="flex w-full h-[calc(100%/7)] relative top-0 left-0 right-0 bottom-0"
+      className="flex w-full h-[16%] relative top-0 left-0 right-0 bottom-0"
     >
       {week.map(({ id, day, isCurrentMonth, isToday }: DayType) => (
         <MonthCalendarCell
@@ -43,7 +43,7 @@ const Calendar = ({ size, calendarMatrix }: MonthCalendaProps) => {
       <ErrorBoundary>
         <div
           key={0}
-          className="flex w-full h-[calc(100%/7)] relative top-0 left-0 right-0 bottom-0"
+          className="flex w-full h-[5%] relative top-0 left-0 right-0 bottom-0"
         >
           {weekDaysName.map(({ id, day }) => (
             <CalendarHeaderCell key={id} id={id} day={day} size={size} />

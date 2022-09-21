@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="h-[70px]">
+    <nav className=" w-full h-[50px]">
       <div className="flex justify-between my-0 mx-auto">
         <span className="text-2xl font-bold">{getCurrentPage()}</span>
         <div className="cursor-pointer">

@@ -25,31 +25,33 @@ export const DayViewCalendar = () => {
   >([]);
 
   useEffect(() => {
-    const timeSlots = Array.from(
-      document.querySelectorAll('.quarter-of-an-hour')
-    );
+    const timeSlots = Array.from(document.querySelectorAll('.half-of-an-hour'));
+    const slotWrapper = document.querySelector('.day-events-wrapper');
+    const wrapperCoordinates = slotWrapper?.getBoundingClientRect();
+    const halfHeight = 25;
     let arr: { id: string; top: number }[] = [];
     for (let t of timeSlots) {
       let coordinates = t.getBoundingClientRect();
       let id = t.id;
-      arr.push({ id, top: coordinates.top });
+      arr.push({
+        id,
+        top:
+          coordinates.bottom - (wrapperCoordinates?.top ?? 0) - halfHeight / 2,
+      });
     }
-
     let newArr: any[] = [];
     if (listOfEventsThisDay.length > 0) {
       listOfEventsThisDay.map((item) => {
-        let a = arr.filter((item_a) => item.timeFrom === item_a.id);
-        let b = arr.filter((item_b) => item.timeTo === item_b.id);
-        newArr.push({ ...item, x1: a[0].top, x2: b[0].top });
+        let a = arr.filter((item_a) => item.time === item_a.id);
+        newArr.push({ ...item, x1: a[0].top, x2: a[0].top + halfHeight });
         seteventsWithCoordinates(newArr);
-
         return;
       });
     }
   }, [currentSelectedDate]);
 
   return (
-    <div className="day-view-wrapper w-full h-full">
+    <div className="day-view-wrapper relative w-full h-[calc(100%-22px)]">
       <ErrorBoundary>
         <div
           style={{
@@ -63,24 +65,26 @@ export const DayViewCalendar = () => {
             {currentSelectedDate}, {moment(currentSelectedDate).format('dddd')}
           </span>
         </div>
-        {day_hours.map((item, index) => (
-          <HourCell
-            key={index}
-            time={item}
-            currentSelectedDate={currentSelectedDate}
-          />
-        ))}
-        {listOfEventsThisDay.length > 0
-          ? eventsWithCoordinates.map((event: any) => (
-              <EventInDayView
-                key={event}
-                top={event.x1}
-                height={event.x2 - event.x1}
-                id={event.uniqueEventId}
-                description={event.description}
-              />
-            ))
-          : null}
+        <div className="relative day-events-wrapper h-[calc(100%-22px)] overflow-y-auto pr-[11px]">
+          {day_hours.map((item, index) => (
+            <HourCell
+              key={index}
+              time={item}
+              currentSelectedDate={currentSelectedDate}
+            />
+          ))}
+          {listOfEventsThisDay.length > 0
+            ? eventsWithCoordinates.map((event: any) => (
+                <EventInDayView
+                  key={event}
+                  top={event.x1}
+                  height={event.x2 - event.x1}
+                  id={event.uniqueEventId}
+                  description={event.description}
+                />
+              ))
+            : null}
+        </div>
       </ErrorBoundary>
     </div>
   );
