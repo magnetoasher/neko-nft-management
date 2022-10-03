@@ -7,9 +7,10 @@ import {
   StarOutlined,
   ShareAltOutlined,
   EllipsisOutlined,
+  DribbbleOutlined,
 } from '@ant-design/icons';
 
-const makeIcon = (icon: string, calendarView: boolean) => {
+const makeIcon = (icon: string, projectView: boolean) => {
   switch (icon) {
     case 'Twitter':
       return (
@@ -21,7 +22,7 @@ const makeIcon = (icon: string, calendarView: boolean) => {
             data-tooltip-placement="bottom"
           >
             <TwitterOutlined />
-            {calendarView && (
+            {projectView && (
               <div className="absolute w-20 top-[13px] -left-[80%] flex flex-col items-center hidden mt-6 group-hover:flex">
                 <div className="w-3 h-3 -mb-2 rotate-45 bg-black"></div>
                 <span className="relative z-10 py-2 px-5 rounded text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
@@ -39,7 +40,7 @@ const makeIcon = (icon: string, calendarView: boolean) => {
           data-tooltip-target="tooltip"
         >
           <FacebookOutlined />
-          {calendarView && (
+          {projectView && (
             <div className="absolute w-20 top-[13px] -left-[80%] flex flex-col items-center hidden mt-6 group-hover:flex">
               <div className="w-3 h-3 -mb-2 rotate-45 bg-black"></div>
               <span className="relative z-10 py-2 px-5 rounded text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
@@ -56,7 +57,7 @@ const makeIcon = (icon: string, calendarView: boolean) => {
           data-tooltip-target="tooltip"
         >
           <InstagramOutlined />
-          {calendarView && (
+          {projectView && (
             <div className="absolute w-20 top-[13px] -left-[80%] flex flex-col items-center hidden mt-6 group-hover:flex">
               <div className="w-3 h-3 -mb-2 rotate-45 bg-black"></div>
               <span className="relative z-10 py-2 px-5 rounded text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
@@ -73,7 +74,7 @@ const makeIcon = (icon: string, calendarView: boolean) => {
           data-tooltip-target="tooltip"
         >
           <StarOutlined />
-          {calendarView && (
+          {projectView && (
             <div className="absolute w-20 top-[13px] -left-[80%] flex flex-col items-center hidden mt-6 group-hover:flex">
               <div className="w-3 h-3 -mb-2 rotate-45 bg-black"></div>
               <span className="relative z-10 py-2 px-5 rounded text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
@@ -90,7 +91,7 @@ const makeIcon = (icon: string, calendarView: boolean) => {
           data-tooltip-target="tooltip"
         >
           <ShareAltOutlined />
-          {calendarView && (
+          {projectView && (
             <div className="absolute w-20 top-[13px] -left-[80%] flex flex-col items-center hidden mt-6 group-hover:flex">
               <div className="w-3 h-3 -mb-2 rotate-45 bg-black"></div>
               <span className="relative z-10 py-2 px-5 rounded text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
@@ -108,6 +109,27 @@ const makeIcon = (icon: string, calendarView: boolean) => {
         >
           <EllipsisOutlined />
         </div>
+      );
+    case 'Dribbble':
+      return (
+        <React.Fragment>
+          <div
+            className="relative group flex items-center mr-1 p-2 border-[1px] border-black rounded-md hover:bg-black hover:text-white cursor-pointer"
+            data-tooltip-target="tooltip"
+            data-tooltip-trigger="hover"
+            data-tooltip-placement="bottom"
+          >
+            <DribbbleOutlined />
+            {projectView && (
+              <div className="absolute w-20 top-[13px] -left-[80%] flex flex-col items-center hidden mt-6 group-hover:flex">
+                <div className="w-3 h-3 -mb-2 rotate-45 bg-black"></div>
+                <span className="relative z-10 py-2 px-5 rounded text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
+                  Dribbble
+                </span>
+              </div>
+            )}
+          </div>
+        </React.Fragment>
       );
     default:
       return null;

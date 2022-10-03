@@ -5,13 +5,16 @@ export const useTimePicker = (initialValue: any, required: boolean) => {
   const [error, setError] = React.useState<string | null>(null);
 
   const timeHandler = (item: string) => {
-    setTimeValue(
-      `${('0' + new Date(item).getHours()).slice(-2)}:${
-        new Date(item).getMinutes() < 10
-          ? new Date(item).getMinutes() + '0'
-          : new Date(item).getMinutes()
-      }`
-    );
+    const hour = new Date(item).getHours();
+    const minute = new Date(item).getMinutes();
+    if (hour > 12) {
+      setTimeValue(
+        `${(hour - 12).toString()}${minute < 10 ? '' : ':' + minute} PM`
+      );
+    } else {
+      setTimeValue(`${hour.toString()}${minute < 10 ? '' : ':' + minute} AM`);
+    }
+
     if (item === '' && required) setError('Required field');
     else setError(null);
   };

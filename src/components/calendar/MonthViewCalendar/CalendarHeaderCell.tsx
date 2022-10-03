@@ -12,17 +12,17 @@ export const CalendarHeaderCell = ({
   day,
   size,
 }: CalendarHeaderCellProps) => {
-  const currentDay = moment(new Date()).format('dddd').slice(0, 3);
+  const currentDay = moment(new Date()).format('ddd');
 
   return (
     <div
-      key={id}
+      key={`header` + id}
       className={
         size === 'small'
-          ? 'w-1/4 flex-1 flex justify-center items-stretch text-[8px] border-solid border-[1px] border-[#cccccc] overflow-auto font-bold border-none w-[34px] h-[34px] overflow-hidden uppercase'
+          ? 'w-1/4 flex-1 flex justify-center items-stretch text-[8px] border-solid border-[1px] border-[#cccccc] overflow-auto font-bold border-none w-[34px] h-[34px] overflow-hidden capitalize'
           : day === currentDay
-          ? 'w-1/4 flex-1 flex justify-center items-center text-[#a04ef6] border-solid border-t-[1px] border-l-[1px] border-r-[1px] border-[#cccccc] overflow-auto font-bold uppercase'
-          : 'w-1/4 flex-1 flex justify-center items-center border-solid border-t-[1px] border-l-[1px] border-r-[1px] border-[#cccccc] overflow-auto font-bold uppercase'
+          ? 'w-1/4 flex-1 flex justify-center items-center text-[#a04ef6] border-solid last:border-r-0 border-r-[1px] border-[rgba(48,48,48,0.1)] overflow-auto font-bold capitalize'
+          : 'w-1/4 flex-1 flex justify-center items-center border-solid last:border-r-0 border-r-[1px] border-[rgba(48,48,48,0.1)] overflow-auto font-bold capitalize'
       }
     >
       {day}

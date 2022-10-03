@@ -22,3 +22,5 @@ export const selectCurrentDate = (state: RootReducer) =>
   state.calendar.currentDate;
 export const selectCurrentSelectedDate = (state: RootReducer) =>
   state.calendar.currentSelectedDate;
+export const selectModalDate = (state: RootReducer) =>
+  state.uiReducer.modalDate;

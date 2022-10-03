@@ -13,6 +13,7 @@ import EventCreatorDialog from './EventCreator/EventCreatorDialog';
 import { EventDetailsPopup } from './EventDetailsModal/ShowEventDetails/ShowEventDetails';
 import { ListOfEventsView } from './ListOfEventsCalendar/ListOfEventsView';
 import { DayViewCalendar } from './DayViewCalendar/DayViewCalendar';
+import { WeekViewCalendar } from './WeekViewCalendar/WeekViewCalendar';
 
 const Calendar: React.FC = () => {
   const isEventCreatorWindowVisible = useSelector(
@@ -26,9 +27,9 @@ const Calendar: React.FC = () => {
       <Header />
       <div
         className={`w-full h-[calc(100%-82px)] ${
-          currentCalendarView === 'day'
-            ? 'p-2 mt-8 border-solid border-[1px] border-[rgba(48,48,48,0.2)] rounded-[20px_20px_0_0]'
-            : ''
+          currentCalendarView === 'day' || currentCalendarView === 'week'
+            ? 'p-2 mt-8 border-solid border-[1px] border-[rgba(48,48,48,0.2)] rounded-[20px]'
+            : 'py-6 overflow-y-auto'
         }`}
       >
         {returnCalendarView(currentCalendarView)}
@@ -45,6 +46,8 @@ const returnCalendarView = (view: string) => {
       return <MonthlyCalendar size="large" />;
     case 'year':
       return <YearViewCalendar />;
+    case 'week':
+      return <WeekViewCalendar />;
     case 'day':
       return <DayViewCalendar />;
     case 'list':

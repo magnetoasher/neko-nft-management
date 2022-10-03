@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SettingIcon from '../assets/Icon.svg';
 
 import SidebarItem from './SidebarItem';
 
@@ -29,21 +29,12 @@ const getScreenWidth = () => {
 };
 
 const Sidebar: React.FC = () => {
-  // const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
-  // const [screenWidth, setScreenWidth] = useState<number>(getScreenWidth());
-
-  // if (screenWidth < 640) {
-  //   setIsCollapsed(true);
-  // } else {
-  //   setIsCollapsed(false);
-  // }
-
   return (
     <div className="flex">
       <aside
         className={`flex flex-col h-screen p-5 bg-white shadow w-56 transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in`}
       >
-        <div className="space-y-3">
+        <div className="flex flex-col h-full">
           <div className="flex items-center justify-center mb-16">
             <Link to="/">
               <h2 className="text-3xl font-bold text-[#A04EF6]">LOGO</h2>
@@ -56,20 +47,22 @@ const Sidebar: React.FC = () => {
               ))}
             </ul>
           </div>
+          <div className="flex items-center justify-around mt-auto mb-8 cursor-pointer transition duration-500 hover:scale-125">
+            <img
+              className="w-8 h-8 rounded-full"
+              src="/Ellipse.png"
+              alt="User Avatar"
+            />
+            <div className="flex flex-col justify-center ml-2 ">
+              <span className="text-lg font-semibold">Elijah Scott</span>
+              <span className="text-xs font-medium text-[rgba(48,48,48,0.26)]">
+                Scott@hey.com
+              </span>
+            </div>
+            <img src={SettingIcon} alt="Setting Icon" />
+          </div>
         </div>
       </aside>
-      {/* <svg
-        onClick={() => setIsCollapsed(!isCollapsed)}
-        className="fixed z-30 flex items-center cursor-pointer right-10 top-6"
-        fill="#2563EB"
-        viewBox="0 0 100 80"
-        width="40"
-        height="40"
-      >
-        <rect width="100" height="10"></rect>
-        <rect y="30" width="100" height="10"></rect>
-        <rect y="60" width="100" height="10"></rect>
-      </svg> */}
     </div>
   );
 };

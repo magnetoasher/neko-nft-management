@@ -8,8 +8,9 @@ export const closeEventCreatorWindow = () => ({
   type: ActionType.CLOSE_EVENT_CREATOR_WINDOW,
 });
 
-export const openEventModalPopup = () => ({
+export const openEventModalPopup = (date?: string) => ({
   type: ActionType.OPEN_EVENT_MODAL_POPUP,
+  payload: date,
 });
 
 export const closeEventModalPopup = () => ({

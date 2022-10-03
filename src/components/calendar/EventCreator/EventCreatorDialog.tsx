@@ -23,7 +23,6 @@ const EventCreatorDialog = () => {
   const timePickerObj = useTimePicker('', true);
   const inputValue = useInput('', true);
   const textAreaValue = useTextArea('', true);
-
   const storageValue = getLocalStorageData('events') || [];
 
   const generatedUniqueEventId = uniqid();
@@ -35,7 +34,7 @@ const EventCreatorDialog = () => {
       uniqueEventId: generatedUniqueEventId,
       date: eventId,
       title: inputValue.value!,
-      time: timePickerObj.timeOption,
+      time: timePickerObj.timeOption || '10:00 AM',
       description: textAreaValue.value!,
     };
     dispatch(addNewEventToList(payload));
@@ -52,13 +51,13 @@ const EventCreatorDialog = () => {
     <Draggable>
       <form
         onSubmit={hadleFormData}
-        className="absolute bottom-[5vh] left-[45vw] flex flex-col w-[400px] p-[50px] min-h-[200px] box-border bg-[#f3f0f0] rounded-[10px]"
+        className="absolute bottom-[5vh] left-[45vw] flex flex-col w-[400px] p-[50px] min-h-[200px] box-border bg-[#fff] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] rounded-[10px]"
       >
         <span className="event-data font-semibold text-2xl text-center">
           {eventId}
         </span>
         <input
-          className="border-none outline-none p-2.5 text-xl focus:border-solid focus:border-b-2 focus:border-[#2c7eea]"
+          className="border border-[1px] outline-none p-2.5 text-xl focus:border-solid focus:border-b-2 focus:border-[#2c7eea]"
           placeholder="Title"
           required
           {...inputValue}
@@ -68,10 +67,15 @@ const EventCreatorDialog = () => {
         )}
 
         <div className="selectTime-wrapper flex justify-between my-5">
-          <TimePicker format="HH:mm" minuteStep={30} {...timePickerObj} />
+          <TimePicker
+            use12Hours
+            format="h:mm a"
+            minuteStep={30}
+            {...timePickerObj}
+          />
         </div>
         <textarea
-          className="mx-0 p-2.5 border-none outline-none"
+          className="mx-0 p-2.5 border border-[1px] outline-none"
           placeholder="Description"
           cols={30}
           rows={10}

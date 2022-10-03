@@ -14,7 +14,8 @@ export interface UIinitialState {
   mouseCoordinates?: { x: number; y: number };
   downloadWeekDaysName: { day: string; id: number }[];
   isLoginWindowVisible: boolean;
-  currentCalendarView: 'year' | 'month' | 'day' | 'list';
+  currentCalendarView: 'year' | 'month' | 'week' | 'day' | 'list';
+  modalDate: string;
 }
 
 export interface CalendarInitialState {
@@ -36,6 +37,7 @@ export type RootReducer = {
   calendar: CalendarInitialState;
 };
 
+export type tDays = {};
 export interface NFTData {
   id: number;
   title: string;

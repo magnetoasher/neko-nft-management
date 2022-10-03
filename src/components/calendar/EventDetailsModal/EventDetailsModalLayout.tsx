@@ -23,7 +23,7 @@ export const EventDetailsModalLayout = (props: any) => {
   const id = useSelector(selectCurrentSelectedEventId) || '';
   const events = getLocalStorageData('events');
   const filteredEventData = events.filter(
-    (item: CalendarEventData) => item.uniqueEventId.toString() !== id
+    (item: CalendarEventData) => item.uniqueEventId === id
   );
 
   const deleteEventHandler = () => {
@@ -38,7 +38,7 @@ export const EventDetailsModalLayout = (props: any) => {
 
   return (
     <Draggable>
-      <div className="w-[500px] absolute bottom-[40vh] left-[35vw] z-[999] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] bg-white p-5">
+      <div className="w-[500px] absolute bottom-[40vh] left-[35vw] z-[999] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] rounded-[10px] bg-white p-5">
         <div className="w-full flex justify-end mb-[15px] gap-5 cursor-move control-buttons">
           <Button
             shape="circle"

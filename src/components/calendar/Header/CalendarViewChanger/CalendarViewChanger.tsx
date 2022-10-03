@@ -24,6 +24,9 @@ export const CalendarViewChanger = () => {
         <option value="month" className="text-black">
           Monthly
         </option>
+        <option value="week" className="text-black">
+          Weekly
+        </option>
         <option value="day" className="text-black">
           Daily
         </option>

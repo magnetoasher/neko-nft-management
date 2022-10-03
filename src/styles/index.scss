@@ -1,11 +1,27 @@
 @import './spreadsheet.scss';
 
 body {
-  font-family: 'Reem Kufi Fun', sans-serif;
+  font-family: 'Poppins', sans-serif;
+
+  a {
+    color: #a04ef6;
+
+    span {
+      color: #000;
+    }
+
+    &:hover {
+      color: #fff;
+
+      span {
+        color: #fff;
+      }
+    }
+  }
 }
 
 ::-webkit-scrollbar {
-  width: 16px;
+  width: 12px;
   height: 16px;
 }
 

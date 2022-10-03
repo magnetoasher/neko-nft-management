@@ -7,5 +7,5 @@ type FallBackComponentProps = {
 export const FallBackComponent: React.FC<FallBackComponentProps> = ({
   message,
 }) => {
-  return <h2 style={{ color: 'red' }}>{message}</h2>;
+  return <h2 className="text-red-600">{message}</h2>;
 };

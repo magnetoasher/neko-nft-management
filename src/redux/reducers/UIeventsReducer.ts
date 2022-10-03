@@ -11,6 +11,7 @@ const initialState: UIinitialState = {
   mouseCoordinates: { x: 0, y: 0 },
   downloadWeekDaysName: days,
   currentCalendarView: 'month',
+  modalDate: '',
 };
 
 const UIComponentsreducer = (
@@ -32,6 +33,7 @@ const UIComponentsreducer = (
       return {
         ...state,
         isEventModalVisible: true,
+        modalDate: action.payload,
       };
     case ActionType.CLOSE_EVENT_MODAL_POPUP:
       return {

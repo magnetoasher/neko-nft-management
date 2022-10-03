@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { HiOutlineUserCircle } from 'react-icons/hi';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
@@ -21,9 +20,6 @@ const Navbar: React.FC = () => {
     <nav className=" w-full h-[50px]">
       <div className="flex justify-between my-0 mx-auto">
         <span className="text-2xl font-bold">{getCurrentPage()}</span>
-        <div className="cursor-pointer">
-          <HiOutlineUserCircle className="w-8 h-8" />
-        </div>
       </div>
     </nav>
   );

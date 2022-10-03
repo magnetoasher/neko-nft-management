@@ -46,10 +46,6 @@ export const createCalendarMatrix = (
             daysInMonth[prevMonth] - firstDayOfMonth + counterBefore
           }`,
           cell: true,
-          isToday:
-            counter === date.getDate() &&
-            month === date.getMonth() &&
-            year === date.getFullYear(),
         };
         counterBefore++;
       }

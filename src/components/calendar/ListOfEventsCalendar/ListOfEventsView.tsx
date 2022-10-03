@@ -26,21 +26,10 @@ export const ListOfEventsView = () => {
   const keys = Object.keys(listOfEvents);
 
   return (
-    <Collapse
-      style={{ width: '100%', backgroundColor: 'inherit' }}
-      defaultActiveKey={['1']}
-    >
+    <Collapse className="w-full bg-inherit" defaultActiveKey={['1']}>
       {keys.map((item, index) => (
         <Panel header={item} key={index}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              color: 'inherit',
-              backgroundColor: 'inherit',
-            }}
-            className="wrapper"
-          >
+          <div className="wrapper flex flex-col text-inherit bg-inherit">
             {listOfEvents[item].map((val) => (
               <Badge
                 key={val.uniqueEventId}

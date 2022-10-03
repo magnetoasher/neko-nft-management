@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
-import clsx from 'clsx';
+import { HiOutlineHome, HiOutlineClipboardList } from 'react-icons/hi';
+import { FaCalendarAlt, FaRegFolderOpen } from 'react-icons/fa';
 
 interface Props {
   name: string;
@@ -12,6 +13,19 @@ const SidebarItem: React.FC<Props> = ({ name, link }) => {
   const [hovered, setHovered] = useState<boolean>(false);
   const [active, setActive] = useState<boolean>(false);
   const location = useLocation();
+
+  const getIcon = (name: string) => {
+    switch (name) {
+      case 'home':
+        return <HiOutlineHome size={20} />;
+      case 'calendar':
+        return <FaCalendarAlt size={20} />;
+      case 'spreadsheet':
+        return <HiOutlineClipboardList size={20} />;
+      case 'database':
+        return <FaRegFolderOpen size={20} />;
+    }
+  };
 
   useEffect(() => {
     if (location.pathname === link) {
@@ -31,25 +45,12 @@ const SidebarItem: React.FC<Props> = ({ name, link }) => {
     >
       <Link
         to={link}
-        className={`flex items-center p-2 space-x-3 hover:text-white ${
-          active ? 'text-white' : 'text-black'
+        className={`flex items-center px-4 py-2 space-x-3 ${
+          active ? '!text-white' : ''
         }`}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#000000"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className={hovered || active ? 'stroke-white' : ''}
-        >
-          <path d="M12 2l9 4.9V17L12 22l-9-4.9V7z" />
-        </svg>
-        <span className="capitalize">{name}</span>
+        {getIcon(name)}
+        <span className={`capitalize ${active && '!text-white'}`}>{name}</span>
       </Link>
     </li>
   );
